@@ -12,57 +12,130 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background: url('https://images.unsplash.com/photo-1546593064-053d59b5bc59?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background: url('background.png') no-repeat center center fixed;
     background-size: cover;
     color: #333;
-    min-height: 100vh;
+    height: 100vh;
+    /* Fixed height */
+    width: 100vw;
+    /* Fixed width */
+    overflow: hidden;
+    /* Prevent scrolling */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* Stack header and grid */
     align-items: center;
-    overflow-x: hidden;
+    justify-content: center;
+    /* Center vertically */
 }
 
 .calendar-container {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    max-width: 1200px;
-    width: 90%;
-    margin: 2rem auto;
+    /* background: rgba(255, 255, 255, 0.85); Removed */
+    /* backdrop-filter: blur(10px); Removed */
+    padding: 0.5rem;
+    /* Minimal padding */
+    /* border-radius: 20px; Removed */
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); Removed */
+    max-width: 1800px;
+    /* Increased from 1200px */
+    width: 98%;
+    height: 95vh;
+    /* Increased from 90vh to give more room */
+    /* Occupy most of the screen */
+    /* Reduced margin */
     z-index: 10;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Let content flow */
 }
 
 header h1 {
     font-family: 'Mountains of Christmas', cursive;
-    font-size: 4rem;
-    color: var(--primary-red);
+    font-weight: 700;
+    font-size: 5rem;
+    color: #fff;
     text-align: center;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+}
+
+/* Header Controls */
+.header-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 100;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: #fff;
+    transform: translateY(-2px);
 }
 
 .calendar-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0.5rem;
+    /* Reduced gap */
+    flex: 1;
+    /* Take remaining height */
+    height: auto;
+    /* Reset fixed height */
+    padding: 0.5rem;
+    /* Reduced padding */
+    width: 100%;
+    max-width: 1600px;
+    /* Limit max width */
+    justify-items: center;
+    /* Center items in their cells */
     align-items: center;
-    gap: 1rem;
-    padding: 2rem;
+    align-self: center;
+    /* Center grid in container */
 }
 
 /* Door Styles */
 .door-container {
     position: relative;
-    width: 140px;
-    /* Fixed width for flex items */
-    height: 140px;
+    width: 10vh;
+    /* Reduced from 12vh */
+    /* Keep responsive size */
+    height: 10vh;
+    /* Reduced from 12vh */
+    max-width: 120px;
+    /* Reduced max size */
+    /* Cap size */
+    max-height: 120px;
     perspective: 1000px;
     cursor: pointer;
     transition: transform 0.3s ease;
     /* Smooth hover effect */
+    /* Margins are set by JS for randomness */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .door-container:hover {
@@ -184,27 +257,40 @@ header h1 {
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto;
+    margin: 0;
     padding: 2rem;
     border: 4px solid var(--gold);
     border-radius: 15px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
+    width: 90%;
+    max-width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    animation: slideDown 0.5s ease-out;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes slideDown {
+@keyframes popIn {
     from {
-        transform: translateY(-50px);
         opacity: 0;
+        transform: translate(-50%, -40%) scale(0.8);
     }
 
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
+}
+
+#modal-day {
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 3.5rem;
+    color: var(--primary-red);
+    margin: 0 0 1rem 0;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+    line-height: 1;
 }
 
 .close-button {
@@ -230,7 +316,8 @@ header h1 {
 
 .modal-phrase {
     font-size: 1.5rem;
-    font-family: 'Mountains of Christmas', cursive;
+    font-family: 'Roboto', sans-serif;
+    /* Changed to sans-serif */
     color: var(--primary-green);
     line-height: 1.4;
 }
@@ -262,6 +349,8 @@ header h1 {
         background-position: 500px 1000px, 400px 400px, 300px 300px;
     }
 }
+
+
 
 /* Responsive */
 @media (max-width: 600px) {
