@@ -145,15 +145,11 @@ shuffleButton.addEventListener('click', () => {
 
 // Helper to check if date is reachable
 function isDateReachable(day) {
-    return true; // Allow opening all windows for testing
-
-    /* Original Logic preserved for reference:
     const today = new Date();
     if (today.getMonth() === 11) { // 11 is December
         return today.getDate() >= day;
     }
-    return false; 
-    */
+    return false;
 }
 
 // Load opened state from localStorage
