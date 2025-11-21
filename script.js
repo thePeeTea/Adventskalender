@@ -231,7 +231,6 @@ function initCalendar() {
             } else {
                 doorContainer.classList.add('shake');
                 setTimeout(() => doorContainer.classList.remove('shake'), 500);
-                alert(t.alert.replace(/{day}/g, item.day));
             }
         });
 
