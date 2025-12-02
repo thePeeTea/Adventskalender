@@ -23,7 +23,7 @@ const translations = {
             "Have yourself a merry little Christmas.",
             "It’s the most wonderful time of the year.",
             "May your days be merry and bright.",
-            "Christmas waves a magic wand over this world.",
+            "Savor the sweet moments of Christmas.",
             "Winter wonderland.",
             "Only 2 days until Christmas Eve!",
             "Christmas Eve Eve!",
@@ -54,7 +54,7 @@ const translations = {
             "Hab ein frohes kleines Weihnachtsfest.",
             "Es ist die wunderbarste Zeit des Jahres.",
             "Mögen deine Tage fröhlich und hell sein.",
-            "Weihnachten schwingt einen Zauberstab über diese Welt.",
+            "Genieße die süßen Momente von Weihnachten.",
             "Winterwunderland.",
             "Nur noch 2 Tage bis Heiligabend!",
             "Ein Tag vor Heiligabend!",
@@ -83,11 +83,11 @@ const calendarData = [
     { day: 17, img: "images/day17.png" },
     { day: 18, img: "images/day18.png" },
     { day: 19, img: "images/day19.png" },
-    { day: 20, img: "https://images.unsplash.com/photo-1516728778615-2d590ea1855e?auto=format&fit=crop&w=500&q=60" },
-    { day: 21, img: "https://images.unsplash.com/photo-1457269449834-928af64c684d?auto=format&fit=crop&w=500&q=60" },
-    { day: 22, img: "https://images.unsplash.com/photo-1511268011861-691ed9340556?auto=format&fit=crop&w=500&q=60" },
-    { day: 23, img: "https://images.unsplash.com/photo-1575151537750-2422d575778c?auto=format&fit=crop&w=500&q=60" },
-    { day: 24, img: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=500&q=60" }
+    { day: 20, img: "images/day20.png" },
+    { day: 21, img: "images/day21.png" },
+    { day: 22, img: "images/day22.png" },
+    { day: 23, img: "images/day23.png" },
+    { day: 24, img: "images/day24.png" }
 ];
 
 const grid = document.getElementById('calendar-grid');
